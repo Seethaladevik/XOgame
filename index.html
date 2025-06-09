@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XO game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="all">
+    <div class="all2">
+        <div class="words"><h1>lets play</h1></div>
+        <div class="row">
+            <div class="box1" id="a1" onclick="put(this)"></div>
+                <div class="box2" id="a2" onclick="put(this)"></div>
+                    <div class="box3" id="a3" onclick="put(this)"></div>   
+                </div>
+        <div class="row">
+            <div class="box4" id="b1" onclick="put(this)"></div>
+                <div class="box5" id="b2" onclick="put(this)"></div>
+                     <div class="box6"  id="b3" onclick="put(this)"></div> 
+                </div>
+
+                <div class="row">
+            <div class="box7" id="c1" onclick="put(this)"></div>
+                <div class="box8" id="c2"onclick="put(this)"></div>
+                    <div class="box9" id="c3" onclick="put(this)"></div> 
+                </div>
+    
+    <div id="winplayer" class="win"></div>
+        <div >
+            <button onclick=resetGame() class="button"> Reset </button>
+        </div>
+    </div>
+    </div>  
+    <script src="script.js"></script>
+    </body>
+    </html>
