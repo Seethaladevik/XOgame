@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XO game</title>
+    <style>
+        .all{
+            /* border: 1px solid black; */
+            height: 100vh;
+            width: 100vw;
+            background-attachment: fixed;
+            background-color: aqua;
+        }
+        *{
+               margin: 0px;
+               padding: 0px;
+        }
+        .words{
+            /* border: 1px solid black; */
+            height: 100px;
+            width: 300px;
+            margin-left: 480px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: xx-large;
+        }
+        .all2{
+            /* border: 1px solid black; */
+            height: 90vh;
+            width: 90vw;
+            margin-left: 70px;
+            
+        }
+        .row{
+            display: flex;
+            justify-content: center;
+            
+        }
+        .box1{
+            
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            font-size: 5em;
+            border-radius: 1rem;
+            background-color: pink;
+        
+        }
+        .box2{
+            
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            font-size: 5em;
+            border-radius: 1rem;
+            background-color: pink;
+        }
+        .box3{
+            
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            font-size: 5em;
+            border-radius: 1rem;
+            background-color: pink;
+        }
+        .box4{
+            
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            font-size: 5em;
+            border-radius: 1rem;
+            background-color: pink;
+        }
+        .box5{
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            font-size: 5em;
+            border-radius: 1rem;
+            background-color: pink;
+        }
+        .box6{
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            font-size: 5em;
+            border-radius: 1rem;
+            background-color: pink;
+        }
+        .box7{
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            font-size: 5em;
+            border-radius: 1rem;
+            background-color: pink;
+        }
+        .box8{
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            font-size: 5em;
+            border-radius: 1rem;
+            background-color: pink;
+
+        }
+        .box9{
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            font-size: 5em;
+            border-radius: 1rem;
+            background-color: pink;
+        }
+        .win{
+            text-align: center;
+            font-size: 5em;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-style: italic;
+            
+        }
+        .button{
+            border: 1px solid black;
+            height: 50px;
+            width: 70px;
+            margin-top: 1%;
+            margin-left: 47%;
+            margin-right: 10px;
+            margin-bottom: 10%;
+            background-color: red;
+            border-radius: 10rem;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="all">
+    <div class="all2">
+        <div class="words"><h1>lets play</h1></div>
+        <div class="row">
+            <div class="box1" id="a1" onclick="put(this)"></div>
+                <div class="box2" id="a2" onclick="put(this)"></div>
+                    <div class="box3" id="a3" onclick="put(this)"></div>   
+                </div>
+        <div class="row">
+            <div class="box4" id="b1" onclick="put(this)"></div>
+                <div class="box5" id="b2" onclick="put(this)"></div>
+                     <div class="box6"  id="b3" onclick="put(this)"></div> 
+                </div>
+
+                <div class="row">
+            <div class="box7" id="c1" onclick="put(this)"></div>
+                <div class="box8" id="c2"onclick="put(this)"></div>
+                    <div class="box9" id="c3" onclick="put(this)"></div> 
+                </div>
+    
+    <div id="winplayer" class="win"></div>
+        <div >
+            <button onclick=resetGame() class="button"> Reset </button>
+        </div>
+    </div>
+    </div>  
+    </body>
+<script>
+    var no=0;
+    var gameplaying="player";
+    console.log(gameplaying)
+    function put(ele){
+        if(gameplaying!=="win"){
+            if(ele.innerText==""){
+                if(no%2==0){
+                    ele.innerText="X";
+                }
+                else if(no%2==1){
+                    ele.innerText="O";
+                }
+                analysis();
+                no++;
+                
+        }
+            console.log("hi",no);
+
+        }
+    }
+    function analysis(){
+        datas=[document.getElementById("a1"),document.getElementById("a2"),document.getElementById("a3"),document.getElementById("b1"),document.getElementById("b2"),document.getElementById("b3"),document.getElementById("c1"),document.getElementById("c2"),document.getElementById("c3")];
+        values=datas.map((ele)=>ele.innerText);
+        var winfun=document.createElement("div");
+        winfun.id="winfunction";
+        var [aa,ab,ac,ba,bb,bc,ca,cb,cc]=values;
+        console.log(values);
+        
+       if((aa!=="")&&(aa==ab)&&(ab==ac)){
+        gameplaying="win";
+       }
+       else if((ba!=="")&&(ba==bb)&&(bb==bc)){
+       gameplaying="win";
+       }
+       else if((ca!=="")&&(ca==cb)&&(cb==cc)){
+        gameplaying="win";
+       }
+       else if((aa!=="")&&(aa==ba)&&(ba==ca)){
+        gameplaying="win";
+       }else if((ab!=="")&&(ab==bb)&&(bb==cb)){
+        gameplaying="win";
+       }
+       else if((ac!=="")&&(ac==bc)&&(bc==cc)){
+        gameplaying="win";
+       }
+       else if((aa!=="")&&(aa==bb)&&(bb==cc)){
+        gameplaying="win";
+       }
+       else {
+        gameplaying="draw"
+       }
+    
+      winplayer=document.getElementById("winplayer");
+     console.log(gameplaying);
+     if(gameplaying=="win"){
+        if(no%2==0){
+            winfun.innerText="X win";
+            winplayer.appendChild(winfun);
+        }
+        else if(no%2==1){
+            winfun.innerText="O win";
+            winplayer.appendChild(winfun);
+        }
+        else{
+            winplayer.innerText="draw";
+        }
+     }
+    }
+    function resetGame(){
+        let boxes = document.querySelectorAll(".row div");
+        boxes.forEach(box => box.innerText = "");
+        document.getElementById("winplayer").innerText = "";
+        no = 0;
+        gameplaying = "player";
+    }
+</script>
+</html>
